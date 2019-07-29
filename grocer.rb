@@ -48,7 +48,7 @@ def apply_coupons(cart, coupons)
 
         # how any items left after using coupon?
         num_items_left_after_coupon = (value[:count] - active_coupon[:num])
-        if num_items_left_after_coupon >= 0=active_coupon[:num] 
+        if num_items_left_after_coupon >= active_coupon[:num] 
           # potentially another coupon could be used
           if coupons.find {|i| i[:item] == key}
             another_coupon = coupons.find {|i| i[:item] == key}
