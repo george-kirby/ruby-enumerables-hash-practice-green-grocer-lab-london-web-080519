@@ -51,6 +51,18 @@ def apply_coupons(cart, coupons)
         if num_items_left_after_coupon >= 0=active_coupon[:num] 
           # potentially another coupon could be used
           if 
+            active_coupon = coupons.find {|i| i[:item] == key}
+          p "Active coupon is #{active_coupon}"
+          if value[:count] >= active_coupon[:num] 
+          #if enough of item to use coupon
+            # add couponed items to memo
+            p memo
+            memo["#{key} W/COUPON"] = {
+              price: (active_coupon[:cost]/active_coupon[:num]),
+              clearance: cart[key][:clearance],
+              count: active_coupon[:num]
+            }
+            p memo
           
         else 
           # add items left after applying coupons to memo
