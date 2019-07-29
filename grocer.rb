@@ -121,6 +121,6 @@ def checkout(cart, coupons)
   cart_after_coupons = apply_coupons(consolidated_cart, coupons)
   cart_after_clearance = apply_clearance(cart_after_coupons)
   
-  sub_total = cart_after_clearance.reduce
+  sub_total = cart_after_clearance.reduce(0) 
   
 end
