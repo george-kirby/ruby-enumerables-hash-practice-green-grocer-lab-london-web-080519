@@ -97,6 +97,16 @@ end
 
 def apply_clearance(cart)
   # code here
+  cart_after_clearance = cart.reduce({}) do |memo, (key, value)|
+    if value[:clearance]
+      clearance_price = 
+    else
+      
+    end
+  
+    memo
+  end
+  cart_after_clearance
 end
 
 def checkout(cart, coupons)
