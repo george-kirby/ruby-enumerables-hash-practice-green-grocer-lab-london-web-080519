@@ -28,46 +28,55 @@ def apply_coupons(cart, coupons)
     if coupons.find {|i| i[:item] == key} 
     # if coupons contains a coupon for that item
       active_coupon = coupons.find {|i| i[:item] == key}
-      
+      p "Active coupon is #{active_coupon}"
       if value[:count] >= active_coupon[:num] 
       #if enough of item to use coupon
         # add couponed items to memo
+        p memo
         memo["#{key} W/COUPON"] = {
           price: (active_coupon[:cost]/active_coupon[:num]),
-          clearance: active_coupon[:clearance],
-          count: active_coupon[:number]
+          clearance: cart[key][:clearance],
+          count: active_coupon[:num]
         }
+        p memo
       
         # any items left after using coupon?
         num_items_left_after_coupon = (value[:count] - active_coupon[:num])
         if num_items_left_after_coupon > 0
           #add any such items to memo
+          p memo
           memo[key] = {
             price: value[:price],
             clearance: value[:clearance],
             count: num_items_left_after_coupon
           }
+          p memo
         end
         #remove that coupon from coupons array - it's been used!
-        coupons.delete(coupons.find {|i| i[:item] == key})
+        p coupons
+        coupons.delete_at(coupons.index(coupons.find {|i| i[:item] == key}))
+        p coupons
         
         memo
       
       else # not enough of that item for coupon to apply
       # add item pair to cart_after_coupons_applied, as is
+          p memo
           memo[key] = value
-          memo
+          p memo
       end
       
     else # no coupon for that item
     # add item pair to cart_after_coupons_applied as is
+      p "No coupon found"
+      p memo
       memo[key] = value
-      memo
+      p memo
 
     end  
 
-  cart_after_coupons_applied
   end
+  cart_after_coupons_applied
 end
 
 
