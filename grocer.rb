@@ -52,11 +52,12 @@ def apply_coupons(cart, coupons)
           # potentially another coupon could be used
           if coupons.find {|i| i[:item] == key}
             another_coupon = coupons.find {|i| i[:item] == key}
-          p "Another coupon found: #{another_coupon}"
+            p "Another coupon found: #{another_coupon}"
             # increase :count of this item W/COUPON
             p memo
             memo["#{key} W/COUPON"][:count] += another_coupon[:num]
             p memo
+          end
           
         else 
           # add items left after applying coupons to memo
