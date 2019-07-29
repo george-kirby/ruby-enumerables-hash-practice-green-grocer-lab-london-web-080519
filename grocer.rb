@@ -39,18 +39,17 @@ def apply_coupons(cart, coupons)
           count: active_coupon[:num]
         }
         p memo
-      
+
+
+
         # how any items left after using coupon?
         num_items_left_after_coupon = (value[:count] - active_coupon[:num])
-        if 
+        if num_items_left_after_coupon >= 0=active_coupon[:num] 
+          # potentially another coupon could be used
+          if 
           
-          
-          
-        else num_items_left_after_coupon >= 0 # used >= 0 to satisfy test,
-          # preferred > 0 to avoid any empty items, 
-          # eg cart contains 0 of item X after coupon applied
-          
-          # add any such items to memo
+        else 
+          # add items left after applying coupons to memo
           p memo
           memo[key] = {
             price: value[:price],
@@ -59,12 +58,7 @@ def apply_coupons(cart, coupons)
           }
           p memo
         end
-        #remove that coupon from coupons array - it's been used!
-        p coupons
-        coupons.delete_at(coupons.index(coupons.find {|i| i[:item] == key}))
-        p coupons
-        
-        memo
+
       
       else # not enough of that item for coupon to apply
       # add item pair to cart_after_coupons_applied, as is
