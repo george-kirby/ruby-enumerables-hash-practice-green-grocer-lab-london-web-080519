@@ -58,8 +58,7 @@ def apply_coupons(cart, coupons)
             memo["#{key} W/COUPON"][:count] += another_coupon[:num]
             p memo
           end
-        end
-          
+
         else 
           # add items left after applying coupons to memo
           p memo
