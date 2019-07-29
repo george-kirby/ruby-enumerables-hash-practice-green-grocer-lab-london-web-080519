@@ -122,7 +122,7 @@ def checkout(cart, coupons)
   cart_after_clearance = apply_clearance(cart_after_coupons)
   
   sub_total = cart_after_clearance.reduce(0) do |memo, (key, value)|
-    memo += (value[:price] * value[:key]).round(2)
+    memo += (value[:price] * value[:count]).round(2)
   end
   
   #apply 10% discount if cart's total over $100
