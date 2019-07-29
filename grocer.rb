@@ -57,6 +57,9 @@ def apply_coupons(cart, coupons)
             p memo
             memo["#{key} W/COUPON"][:count] += another_coupon[:num]
             p memo
+            
+            # remove the used coupon
+            coupons.delete_at(coupons.index(coupons.find {|i| i[:item] == key}))
           end
           num_items_left_after_coupon -= active_coupon[:num]
         end
