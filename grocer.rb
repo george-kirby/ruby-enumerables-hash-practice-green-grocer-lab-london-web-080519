@@ -42,7 +42,7 @@ def apply_coupons(cart, coupons)
       
         # any items left after using coupon?
         num_items_left_after_coupon = (value[:count] - active_coupon[:num])
-        if num_items_left_after_coupon > 0
+        if num_items_left_after_coupon >= 0
           #add any such items to memo
           p memo
           memo[key] = {
