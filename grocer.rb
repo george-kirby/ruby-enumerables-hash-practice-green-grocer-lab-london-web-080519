@@ -31,10 +31,6 @@ def apply_coupons(cart, coupons)
       p "Active coupon is #{active_coupon}"
       if value[:count] >= active_coupon[:num] 
       #if enough of item to use coupon
-        if
-        # if   
-        end
-        memo
         # add couponed items to memo
         p memo
         memo["#{key} W/COUPON"] = {
